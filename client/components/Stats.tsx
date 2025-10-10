@@ -74,7 +74,7 @@ const Counter = ({ value, label, helper, duration = 2000 }) => {
 const AnimatedStats = () => {
     const stats = [
         {
-            value: 12000,
+            value: 7000,
             label: "Visa Success Stories",
             helper: "Gateway Abroad students excelling in top universities across the USA, UK, and Canada after stellar SAT scores.",
             duration: 2500

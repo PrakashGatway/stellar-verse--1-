@@ -28,7 +28,7 @@ const Header = () => {
 
   const handleClick = () => {
     const message = encodeURIComponent('Hi, I want help with SAT preparation.');
-    window.open(`https://wa.me/919999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
   };
 
   useEffect(() => {

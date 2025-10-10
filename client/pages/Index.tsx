@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight, Heart, Minus, MoveRight, Plus, Star } from "lucide-react";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState,useRef } from "react";
+import { motion } from 'framer-motion';
 import { cn } from "@/lib/utils";
 import PartnerUniversitiesSlider from "@/components/Univercity";
 import ConsultationModal from "@/components/ConsulantModal";
@@ -208,7 +208,7 @@ const Index = ({ type }) => {
   const handleConsultationTrigger = (value) => {
     if (type === "whatsapp" && value === true) {
       const message = encodeURIComponent('Hi, I want help with SAT preparation.');
-      window.open(`https://wa.me/919999999999?text=${message}`, '_blank');
+      window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
     } else {
       setIsModalOpen(value);
     }
@@ -218,12 +218,12 @@ const Index = ({ type }) => {
     if (String(type).toLowerCase() === "whatsappopen") {
       const timer = setTimeout(() => {
         const message = encodeURIComponent('Hi, I want help with SAT preparation.');
-        window.location.href = `https://wa.me/919999999999?text=${message}`;
+        window.location.href = `https://wa.me/917023881046?text=${message}`;
       }, 15000);
 
       // const timer = setTimeout(() => {
       //   const link = document.createElement("a");
-      //   link.href = "https://wa.me/919999999999?text=Hi%20I%20want%20a%20consultation";
+      //   link.href = "https://wa.me/917023881046?text=Hi%20I%20want%20a%20consultation";
       //   link.target = "_blank";
       //   link.rel = "noopener noreferrer";
       //   link.click();
@@ -244,7 +244,7 @@ const Index = ({ type }) => {
         <TestimonialsSection visiable={handleConsultationTrigger} />
         <FeaturesSection visiable={handleConsultationTrigger} />
         <TrustSection visiable={handleConsultationTrigger} />
-        <TrainingPlans visiable={handleConsultationTrigger} />
+        {/* <TrainingPlans visiable={handleConsultationTrigger} /> */}
         <FaqSection />
       </div>
     </>
@@ -364,12 +364,111 @@ const HeroSection = ({ visiable }) => {
 };
 
 const TestimonialsSection = ({ visiable }) => {
+  const containerRef = useRef(null);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!autoScroll) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollWidth = container.scrollWidth / 2;
+    let animationFrame;
+    let startTime;
+
+    const animateScroll = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      
+      const progress = (elapsed % 40000) / 40000;
+      const scrollPos = progress * scrollWidth;
+      
+      container.scrollLeft = scrollPos;
+      animationFrame = requestAnimationFrame(animateScroll);
+    };
+
+    animationFrame = requestAnimationFrame(animateScroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [autoScroll]);
+
+  // Touch handlers
+  const handleTouchStart = (e) => {
+    setAutoScroll(false);
+    setIsScrolling(true);
+    const touch = e.touches[0] || e.changedTouches[0];
+    setStartX(touch.screenX);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isScrolling) return;
+    
+    e.preventDefault();
+    const touch = e.touches[0] || e.changedTouches[0];
+    const x = touch.screenX;
+    const walk = (x - startX) * 1;
+    
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsScrolling(false);
+    setTimeout(() => setAutoScroll(true), 2000);
+  };
+
+  const handleMouseDown = (e) => {
+    setAutoScroll(false);
+    setIsScrolling(true);
+    setStartX(e.pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isScrolling) return;
+    
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsScrolling(false);
+    setTimeout(() => setAutoScroll(true), 3000);
+  };
+
+  const handleMouseLeave = () => {
+    if (isScrolling) {
+      setIsScrolling(false);
+      setTimeout(() => setAutoScroll(true), 3000);
+    }
+  };
+
+  // Hover handlers
+  const handleMouseEnter = () => {
+    setAutoScroll(false);
+  };
+
+  const handleMouseLeaveContainer = () => {
+    if (!isScrolling) {
+      setTimeout(() => setAutoScroll(true), 3000);
+    }
+  };
+
   return (
     <>
       <section id="testimonials" className="relative scroll-mt-20 bg-background">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-
             <h2 className="mt-4 text-2xl font-semibold text-balance md:text-[40px]">
               Top <span className="text-primary">Scorers</span>
             </h2>
@@ -379,18 +478,34 @@ const TestimonialsSection = ({ visiable }) => {
           </div>
 
           <div className="mt-8 space-y-8">
-            <div className="no-scrollbar py-12 flex gap-4 overflow-x-auto pb-4">
-              {testimonials.map((testimonial) => (
-                <article
-                  key={testimonial.name}
+            <div 
+              ref={containerRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeaveContainer}
+              className="no-scrollbar py-12 flex gap-4 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
+            >
+              {/* Duplicate testimonials for infinite scroll effect */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <motion.article
+                  key={`${testimonial.name}-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group relative max-w-[300px] shrink-0 rounded-3xl border border-4 border-border bg-card px-6 pb-6 pt-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-floating)] md:max-w-[420px]"
                 >
                   <div className="absolute -top-12 right-6">
                     <div className="relative">
-                      <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[hsl(var(--testimonial-accent))] to-primary blur-xl transition-opacity duration-300 " />
-
+                      <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[hsl(var(--testimonial-accent))] to-primary blur-xl transition-opacity duration-300" />
                       <div className="relative rounded-full border-4 border-card bg-gradient-to-br from-[hsl(var(--testimonial-accent))] to-primary p-1 shadow-lg">
-                        <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-red-400 bg-white">
+                        <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-red-400 bg-white">
                           <img
                             src={testimonial.avatar}
                             alt={testimonial.name}
@@ -403,7 +518,6 @@ const TestimonialsSection = ({ visiable }) => {
                     </div>
                   </div>
 
-                  {/* Card content */}
                   <div className="space-y-4">
                     <div>
                       <h3 className="text-xl font-bold text-[#E93A3A]">
@@ -417,41 +531,19 @@ const TestimonialsSection = ({ visiable }) => {
                     <p className="min-h-[120px] text-sm leading-relaxed text-foreground/70">
                       {testimonial.quote}
                     </p>
-
-                    {/* Footer with stars and likes */}
-                    {/* <div className="flex items-center justify-between border-t border-border pt-4">
-                    <div className="flex gap-1">
-                      {[...Array(testimonial?.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-[hsl(var(--testimonial-accent))] text-[hsl(var(--testimonial-accent))]"
-                        />
-                      ))}
-                    </div>
-
-                    <button
-                      className="group/like flex items-center gap-2 rounded-full bg-[hsl(var(--testimonial-accent-light))] px-4 py-2 transition-all hover:bg-[hsl(var(--testimonial-accent))]"
-                      aria-label="Like this testimonial"
-                    >
-                      <Heart className="h-4 w-4 fill-[hsl(var(--testimonial-accent))] text-[hsl(var(--testimonial-accent))] transition-colors group-hover/like:fill-white group-hover/like:text-white" />
-                      <span className="text-xs font-semibold text-[hsl(var(--testimonial-accent))] transition-colors group-hover/like:text-white">
-                        {testimonial?.likes}
-                      </span>
-                    </button>
-                  </div> */}
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
 
             <div className="flex justify-center md:flex">
-              <a
+              <button
                 onClick={() => visiable(true)}
                 className="inline-flex items-center bg-amber-400 border border-2 border-black text-black justify-center gap-3 rounded-2xl px-8 py-3 text-base font-semibold shadow-floating transition hover:-translate-y-0.5"
               >
                 Book Free SAT Demo
                 <MoveRight className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -56,7 +56,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
 
   const onSubmit = async (data) => {
     try {
-      let response = await axios.post('http://localhost:5000/api/v1/leads', { ...data, phone: data.mobileNumber, coursePreference: 'SAT', source: "googleAds" })
+      let response = await axios.post('https://uat.gatewayabroadeducations.com/api/v1/leads', { ...data, phone: data.mobileNumber, coursePreference: 'SAT', source: "googleAds" })
       if (response.data.success) {
         handleClose();
         navigate('/thankyou')

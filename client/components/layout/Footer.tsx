@@ -63,7 +63,7 @@ const footerColumns = [
 
 const handleClick = () => {
   const message = encodeURIComponent('Hi, I want help with SAT preparation.');
-  window.open(`https://wa.me/919999999999?text=${message}`, '_blank');
+  window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
 };
 
 const Footer = () => {
@@ -76,9 +76,6 @@ const Footer = () => {
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
           {/* Content Section */}
           <div className="max-w-3xl space-y-3 text-center md:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 border px-5 py-2 text-sm font-semibold uppercase tracking-wide text-primary">
-              Study abroad with experts
-            </span>
             <h2 className="text-2xl font-medium leading-tight text-balance text-foreground md:text-3xl">
               Plan your global education with Gateway Abroad
             </h2>
@@ -87,7 +84,7 @@ const Footer = () => {
             </p>
             <a
               onClick={handleClick}
-              className="inline-flex items-center justify-center rounded-2xl bg-white border border-black/60 px-8 py-3 text-base font-semibold text-black transition hover:bg-primary/90"
+              className="inline-flex items-center bg-amber-400 border border-2 border-black text-black justify-center rounded-2xl px-8 py-3 text-base font-semibold text-black transition hover:bg-amber-500"
             >
               Book Free Consultation
             </a>
@@ -104,10 +101,10 @@ const Footer = () => {
         </div>
       </section>
 
-      <div className="container px-1">
-        <div className="mt-12 rounded-[28px] border border-border bg-white/90 px-6 py-12 shadow-card backdrop-blur md:px-16 md:py-14">
-          <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-            <div className="max-w-sm space-y-4">
+      <div className="container px-2 sm:!container">
+        <div className="mt-12 rounded-[28px] border border-border bg-white/90 px-6 py-12 shadow-card backdrop-blur md:px-16 pb-4 mb-28 sm:mb-2">
+          <div className="flex flex-col gap-6 md:flex-row md:justify-between">
+            <div className="max-w-sm space-y-3">
               <img
                 src={brandLogo}
                 alt="Gateway Abroad"
@@ -119,11 +116,14 @@ const Footer = () => {
                 105, First Floor, Geetanjali Tower, Ajmer Road, Civil Lines, Jaipur, Rajasthan 302006
               </p>
               <div className="space-y-1 text-sm text-foreground/70">
-                <a href="tel:+918302092630" className="block font-semibold text-foreground hover:text-primary">
-                  +91 83020 92630
-                </a>
-                <a href="tel:+919001571113" className="block font-semibold text-foreground hover:text-primary">
-                  +91 90015 71113
+                <a href="tel:+918302092630" className=" font-semibold text-foreground hover:text-primary">
+                  +91 8302092630
+                </a>,
+                <a href="tel:+919001571113" className=" font-semibold text-foreground hover:text-primary">
+                  +91 9001571113
+                </a>,
+                <a href="tel:+919166144321" className=" font-semibold text-foreground hover:text-primary">
+                  +91 9166144321
                 </a>
                 <a
                   href="mailto:jaipur@gatewayabroad.in"

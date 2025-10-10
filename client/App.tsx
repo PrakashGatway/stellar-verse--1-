@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/sat-prep" element={<Index type="whatsapp" />} />
           <Route path="/sat-preparation/wm" element={<Index type="whatsappOpen" />} />
 
-          <Route path="/" element={<Index type='whatsapp' />} />
+          <Route path="/" element={<Index type='form' />} />
           <Route path="/thankyou" element={<ThankYouPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -53,7 +53,7 @@ const CompactCallbackDrawer = () => {
     }
 
     try {
-      let response = await axios.post('http://localhost:5000/api/v1/leads', { phone: mobileNumber, coursePreference: 'SAT', source: "googleAds" })
+      let response = await axios.post('https://uat.gatewayabroadeducations.com/api/v1/leads', { phone: mobileNumber, coursePreference: 'SAT', source: "googleAds" })
       if (response.data.success) {
         setErrors({});
         setIsSubmitted(true);
