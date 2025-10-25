@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <Footer />
-      <MobileCtaBar />
+      {/* <MobileCtaBar /> */}
     </div>
   );
 };

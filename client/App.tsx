@@ -19,8 +19,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     {/* <Toaster /> */}
     {/* <Sonner /> */}
-    <WhatsAppIcon />
-    <CompactCallbackDrawer />
+    {/* <WhatsAppIcon /> */}
+    {/* <CompactCallbackDrawer /> */}
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>

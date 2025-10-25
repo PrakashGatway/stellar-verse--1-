@@ -59,7 +59,9 @@ const ConsultationModal = ({ isOpen, onClose }) => {
       let response = await axios.post('https://uat.gatewayabroadeducations.com/api/v1/leads', { ...data, phone: data.mobileNumber, coursePreference: 'SAT', source: "googleAds" })
       if (response.data.success) {
         handleClose();
+        localStorage.setItem('formFilled', 'true');
         navigate('/thankyou')
+        reset();
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -101,7 +103,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
             </button>
 
             {/* Header */}
-            <div className="pr-8 mb-6">
+            <div className="pr-8 mb-4">
               <h3 className="text-xl font-bold text-red-700">Book Free Consultation</h3>
               <p className="text-gray-600 mt-2 text-sm">
                 Fill in your details and our expert will contact you shortly
@@ -211,7 +213,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-red-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-red-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-red-600 text-white py-2 px-6 rounded-xl font-semibold hover:bg-red-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:scale-[1.02] active:scale-[0.98]"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">

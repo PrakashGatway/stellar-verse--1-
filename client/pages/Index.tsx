@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Heart, Minus, MoveRight, Plus, Star } from "lucide-react";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from 'framer-motion';
 import { cn } from "@/lib/utils";
 import PartnerUniversitiesSlider from "@/components/Univercity";
@@ -7,6 +7,8 @@ import ConsultationModal from "@/components/ConsulantModal";
 import TestimonialsSectionsss from "@/components/Testimonial";
 import AnimatedStats from "@/components/Stats";
 import TrainingPlans from "@/components/Plans";
+import { useSearchParams } from "react-router-dom";
+import MobileCtaBar from "@/components/layout/MobileCtaBar";
 
 type Testimonial = {
   name: string;
@@ -219,7 +221,7 @@ const Index = ({ type }) => {
       const timer = setTimeout(() => {
         const message = encodeURIComponent('Hi, I want help with SAT preparation.');
         window.location.href = `https://wa.me/917023881046?text=${message}`;
-      }, 15000);
+      }, 150);
 
       // const timer = setTimeout(() => {
       //   const link = document.createElement("a");
@@ -232,6 +234,14 @@ const Index = ({ type }) => {
     }
   }, [type]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const queryType = params.get("type");
+
+    if (queryType && queryType.toLowerCase() === "query") {
+      setIsModalOpen(true);
+    }
+  }, []);
 
   return (
     <>
@@ -246,6 +256,7 @@ const Index = ({ type }) => {
         <TrustSection visiable={handleConsultationTrigger} />
         {/* <TrainingPlans visiable={handleConsultationTrigger} /> */}
         <FaqSection />
+        <MobileCtaBar visiable={handleConsultationTrigger} />
       </div>
     </>
 
@@ -384,10 +395,10 @@ const TestimonialsSection = ({ visiable }) => {
     const animateScroll = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
-      
+
       const progress = (elapsed % 40000) / 40000;
       const scrollPos = progress * scrollWidth;
-      
+
       container.scrollLeft = scrollPos;
       animationFrame = requestAnimationFrame(animateScroll);
     };
@@ -410,12 +421,12 @@ const TestimonialsSection = ({ visiable }) => {
 
   const handleTouchMove = (e) => {
     if (!isScrolling) return;
-    
+
     e.preventDefault();
     const touch = e.touches[0] || e.changedTouches[0];
     const x = touch.screenX;
     const walk = (x - startX) * 1;
-    
+
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -433,11 +444,11 @@ const TestimonialsSection = ({ visiable }) => {
 
   const handleMouseMove = (e) => {
     if (!isScrolling) return;
-    
+
     e.preventDefault();
     const x = e.pageX - containerRef.current.offsetLeft;
     const walk = (x - startX) * 2;
-    
+
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -478,7 +489,7 @@ const TestimonialsSection = ({ visiable }) => {
           </div>
 
           <div className="mt-8 space-y-8">
-            <div 
+            <div
               ref={containerRef}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}

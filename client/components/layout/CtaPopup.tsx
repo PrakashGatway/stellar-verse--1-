@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const CompactCallbackDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,15 +11,25 @@ const CompactCallbackDrawer = () => {
   const [timeLeft, setTimeLeft] = useState(20);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const isFormSubmitted = localStorage.getItem('formFilled') == 'true';
+    if (isFormSubmitted) return;
+
+    if (isOpen || isSubmitted) return;
+
+    const attemptCount = parseInt(localStorage.getItem('callbackDrawerAttempts') || '0', 10);
+    const delaySeconds = (attemptCount + 1) * 10;
+    const delayMs = delaySeconds * 1000;
+
+    const timer = setTimeout(() => {
       if (!isOpen && !isSubmitted) {
         setIsOpen(true);
         setShowCountdown(true);
         setTimeLeft(20);
+        localStorage.setItem('callbackDrawerAttempts', String(attemptCount + 1));
       }
-    }, 20000);
+    }, delayMs);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, [isOpen, isSubmitted]);
 
   useEffect(() => {
@@ -57,6 +68,11 @@ const CompactCallbackDrawer = () => {
       if (response.data.success) {
         setErrors({});
         setIsSubmitted(true);
+        localStorage.setItem('formFilled', 'true');
+        const searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("form", "filled");
+        const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+        window.history.replaceState(null, "", newRelativePathQuery);
       }
       setTimeout(() => {
         setIsOpen(false);
