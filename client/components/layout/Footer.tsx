@@ -66,7 +66,7 @@ const handleClick = () => {
   window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
 };
 
-const Footer = () => {
+const Footer = ({visiable}) => {
   return (
     <footer className="bg-background pt-2" id="footer">
       <section
@@ -83,7 +83,7 @@ const Footer = () => {
               Connect with experienced counsellors for personalised university shortlisting, test prep, and visa guidance.
             </p>
             <a
-              onClick={handleClick}
+              onClick={()=>visiable(true)}
               className="inline-flex items-center bg-amber-400 border border-2 border-black text-black justify-center rounded-2xl px-8 py-3 text-base font-semibold text-black transition hover:bg-amber-500"
             >
               Book Free Consultation

@@ -9,6 +9,8 @@ import AnimatedStats from "@/components/Stats";
 import TrainingPlans from "@/components/Plans";
 import { useSearchParams } from "react-router-dom";
 import MobileCtaBar from "@/components/layout/MobileCtaBar";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 type Testimonial = {
   name: string;
@@ -249,6 +251,7 @@ const Index = ({ type }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+      <Header visiable={handleConsultationTrigger} />
       <div className="space-y-10 pb-10 md:space-y-20">
         <HeroSection visiable={handleConsultationTrigger} />
         <TestimonialsSection visiable={handleConsultationTrigger} />
@@ -258,6 +261,7 @@ const Index = ({ type }) => {
         <FaqSection />
         <MobileCtaBar visiable={handleConsultationTrigger} />
       </div>
+      <Footer visiable={handleConsultationTrigger} />
     </>
 
   );

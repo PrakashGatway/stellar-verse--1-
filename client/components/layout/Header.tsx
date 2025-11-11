@@ -11,7 +11,7 @@ const navLinks = [
 
 const logoSrc = "https://www.gatewayabroadeducations.com/images/logo.svg";
 
-const Header = () => {
+const Header = ({ visiable }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -50,7 +50,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all",
+        "sticky top-0 z-40 transition-all",
         scrolled ? "bg-white shadow-header" : "bg-background/95 backdrop-blur",
       )}
     >
@@ -66,7 +66,7 @@ const Header = () => {
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+          {/* {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -74,10 +74,10 @@ const Header = () => {
             >
               {link.label}
             </a>
-          ))}
+          ))} */}
 
           <button
-            onClick={handleClick}
+            onClick={() => visiable(true)}
             className="group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2 border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
           >
             Book Now
