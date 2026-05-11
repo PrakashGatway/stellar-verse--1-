@@ -415,7 +415,7 @@ const HeroSection = ({ visiable }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-3xl lg:text-5xl font-semibold leading-tight text-[#d71635]">
+              <h1 className="text-3xl lg:text-5xl font-semibold leading-tight text-[#d71635] space-x-3">
                 Study Abroad Consultant
                 <span className="text-[#000] font-bold">
                   {" "}
@@ -429,7 +429,7 @@ const HeroSection = ({ visiable }) => {
                   Apply Now
                 </span>
 
-                <h3 className="text-xl font-bold mb-4 text-[#000]">
+                <h3 className="text-xl font-bold mb-4 text-[#fff]">
                   Applying for Upcoming Intake
                 </h3>
 
@@ -519,26 +519,26 @@ const HeroSection = ({ visiable }) => {
       </section>
 
       {/* FORM */}
-      <section className="bg-[#d71635] py-10 overflow-hidden">
+      <section className="bg-[#d71635] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
 
           {/* LEFT IMAGE */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block h-full">
             <img
               src="/images/home-enquiry.png"
               alt="enquiry"
-              className="w-[380px]"
+              className="w-[380px] h-full"
             />
           </div>
 
           {/* FORM */}
-          <div className="w-full lg:w-[60%]">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8">
+          <div className="w-full lg:w-[60%] py-10">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8 `">
               Connect With Our
               <span className="block">Expert Team</span>
             </h2>
 
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-5" onSubmit={handleSubmit(onSubmit)}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-5 " onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <input
                   type="text"
@@ -614,7 +614,7 @@ const HeroSection = ({ visiable }) => {
               <div className="md:col-span-2 flex justify-center">
                 <button 
                   type="submit"
-                  className="bg-[#123b73] text-white px-10 py-3 rounded-lg font-semibold hover:bg-black transition"
+                  className="bg-[#fbbf24] border-2 border-[#000] text-white px-10 py-3 rounded-lg font-semibold hover:bg-black transition"
                 >
                   Submit
                 </button>
@@ -664,15 +664,15 @@ const TestimonialsSection = ({ visiable }) => {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Heading */}
         <div className="mb-8">
-          <p className="text-[#F15A29] text-sm font-semibold uppercase">
+          <p className="text-[#000] text-sm font-semibold uppercase">
             Top
           </p>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-[#163B65]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#d71635]">
             Universities Hub
           </h2>
 
-          <div className="w-24 h-[3px] bg-[#F15A29] mt-2"></div>
+          <div className="w-24 h-[3px] bg-[#d71635] mt-2"></div>
         </div>
 
         {/* Cards */}
@@ -1284,9 +1284,9 @@ const TrustSection = ({ visiable }) => {
       <div className="max-w-7xl mx-auto px-3 md:px-6">
         {/* TOP HEADING */}
         <div className="text-center max-w-5xl mx-auto mb-10">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#163B65] leading-tight">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#000] leading-tight">
             Your SAT Success:
-            <span className="text-[#d71635]">
+            <span className="text-[#000]">
               {" "}
               Your Ticket to Global Universities
             </span>
@@ -1367,7 +1367,7 @@ const TrustSection = ({ visiable }) => {
                       </div>
 
                       {/* TITLE */}
-                      <h3 className="text-[#163B65] font-bold text-lg leading-tight mb-3">
+                      <h3 className="text-[#000] font-bold text-lg leading-tight mb-3">
                         {service.title}
                       </h3>
 
