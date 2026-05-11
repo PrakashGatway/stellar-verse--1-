@@ -93,7 +93,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
         email: email.trim(),
         phone: mobileNumber,
         city: city.trim(),
-        coursePreference: 'SAT',
+        coursePreference: 'NA',
         source: "googleAds",
         extraDetails: {
           ...rest
