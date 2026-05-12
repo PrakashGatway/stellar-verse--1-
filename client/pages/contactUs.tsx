@@ -59,13 +59,13 @@ const logoSrc = "https://www.gatewayabroadeducations.com/images/logo.svg";
         </a>
 
         <nav className=" items-center gap-8 md:flex">
-            <a href="tel:+918302092630" 
-            className="group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2
-             border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition
+               <a href="tel:+918302092630" 
+            className="group inline-flex items-center gap-1 rounded-xl bg-amber-400 border border-2
+             border-black text-black px-4 py-2 sm:py-2 text-[10px] sm:text-sm font-semibold shadow-sm transition
               hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
           >
             <PhoneCall className="h-4 w-4 transition group-hover:translate-x-1" />
-            +91-8302092630
+            +918302092630
           </a>
         </nav>
 

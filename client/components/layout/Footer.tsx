@@ -19,7 +19,7 @@ const Footer = ({ visiable }) => {
         }}
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl md:text-4xl font-serif font-semibold leading-tight">
+          <h2 className="text-2xl md:text-4xl font-serif font-semibold leading-tight text-white">
             Want Guaranteed Admissions at Top Universities?
           </h2>
 

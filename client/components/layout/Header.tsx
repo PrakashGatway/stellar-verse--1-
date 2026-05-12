@@ -60,7 +60,7 @@ const Header = ({ visiable }) => {
         scrolled ? "bg-white shadow-header" : "bg-background/95 backdrop-blur",
       )}
     >
-      <div className="container flex items-center justify-center md:justify-between gap-4 py-3 md:py-4">
+      <div className="container flex items-center justify-between gap-4  md:py-4">
         <a href="#hero" className="flex items-center gap-2" onClick={closeMenu}>
           <img
             src={logoSrc}
@@ -83,13 +83,14 @@ const Header = ({ visiable }) => {
           ))} */}
           {/* <button onClick={() => handleCall()} */}
     <a href="tel:+918302092630" 
-            className="group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2
-             border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition
+            className="group inline-flex items-center gap-1 rounded-xl bg-amber-400 border border-2
+             border-black text-black px-4 py-2 sm:py-2 text-[10px] sm:text-sm font-semibold shadow-sm transition
               hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
           >
             <PhoneCall className="h-4 w-4 transition group-hover:translate-x-1" />
-            +91-8302092630
+            +918302092630
           </a>
+
 
           <button
             onClick={() => visiable(true)}
