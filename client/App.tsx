@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ThankYouPage from "./pages/Thankyou";
 import WhatsAppIcon from "./components/layout/Whatsapp";
 import CompactCallbackDrawer from "./components/layout/CtaPopup";
+import ContactUs from "./pages/contactUs";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/sat-preparation" element={<Index type='form' />} />
           <Route path="/sat-prep" element={<Index type="whatsapp" />} />
           <Route path="/sat-preparation/wm" element={<Index type="whatsappOpen" />} />
+          <Route path="/contactus" element={<ContactUs />} />
           <Route path="/" element={<Index type='form' />} />
           <Route path="/thankyou" element={<ThankYouPage />} />
           <Route path="*" element={<NotFound />} />

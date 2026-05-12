@@ -184,13 +184,14 @@ const faqs: FAQ[] = [
 
 const Index = ({ type }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleConsultationTrigger = (value) => {
     if (type === "whatsapp" && value === true) {
       const message = encodeURIComponent('Hi, I want help with SAT preparation.');
       window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
     } else {
-      setIsModalOpen(value);
+      // setIsModalOpen(value);
+      navigate("/contactUs");
     }
   };
 
@@ -407,7 +408,7 @@ const HeroSection = ({ visiable }) => {
       {/* HERO */}
       <section className="relative overflow-hidden bg-white pt-10 lg:pt-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center md:gap-10">
 
             {/* LEFT */}
             <motion.div
@@ -415,9 +416,9 @@ const HeroSection = ({ visiable }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-3xl lg:text-5xl font-semibold leading-tight text-[#d71635] space-x-3">
+              <h1 className="text-3xl lg:text-5xl font-semibold leading-tight text-[#d71635] " style={{lineHeight: 1.2}}>
                 Study Abroad Consultant
-                <span className="text-[#000] font-bold">
+                <span className="text-[#000] font-bold mt-2">
                   {" "}
                   in India
                 </span>
@@ -462,26 +463,26 @@ const HeroSection = ({ visiable }) => {
               className="flex justify-center lg:justify-end"
             >
               <div className="relative flex items-center justify-center">
-                <div className="absolute -right top-51 animate-spin [animation-duration:180s] hidden lg:block">
+                {/* <div className="absolute -right top-51 animate-spin [animation-duration:180s] hidden lg:block">
                   <img
                     src="/images/hero-bg-round.png"
                     alt="circle"
                     className="w-[640px] max-w-none"
                   />
-                </div>
+                </div> */}
 
                 <motion.div
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="relative z-1 -bottom-10"
+                  className="relative z-1 -bottom-1"
                 >
                   <img
                     src={"/images/hero-bg-1.png"}
-                    width={450}
+                    width={640}
                     height={900}
                     alt="cap"
-                    className="lg:w-[420px] w-[200px]"
+                    className="lg:w-[620px] w-[600px]"
                   />
                 </motion.div>
               </div>
@@ -491,7 +492,7 @@ const HeroSection = ({ visiable }) => {
       </section>
 
       {/* STATS */}
-      <section className="py-2 px-4 bg-white">
+      <section className="py-2 px-4 bg-white mt-6"  style={{marginTop  : "2rem"}}>
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {homePage.stats.item.map((stat, index) => {
             const Icon = stat?.icon;
@@ -518,7 +519,7 @@ const HeroSection = ({ visiable }) => {
       </section>
 
       {/* FORM */}
-      <section className="bg-[#d71635] overflow-hidden">
+      <section className="bg-[#d71635] overflow-hidden " style={{marginTop  : "2rem"}}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
 
           {/* LEFT IMAGE */}
@@ -526,12 +527,12 @@ const HeroSection = ({ visiable }) => {
             <img
               src="/images/home-enquiry.png"
               alt="enquiry"
-              className="w-[380px] h-full"
+              className="w-[630px] h-[460px]"
             />
           </div>
 
           {/* FORM */}
-          <div className="w-full lg:w-[60%] py-10">
+          <div className="w-full lg:w-[60%] ">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8 `">
               Connect With Our
               <span className="block">Expert Team</span>
@@ -659,11 +660,11 @@ const TestimonialsSection = ({ visiable }) => {
   }, [autoScroll]);
 
   return (
-    <section className="bg-[#f5f5f5] py-10">
+    <section className="bg-[#f5f5f5] py-6" style={{marginTop  : "2rem"}}>
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Heading */}
         <div className="mb-8">
-          <p className="text-[#000] text-sm font-semibold uppercase">
+          <p className="text-[#000] text-lg font-semibold uppercase">
             Top
           </p>
 
@@ -719,7 +720,11 @@ const TestimonialsSection = ({ visiable }) => {
         </div>
 
         {/* Scholarship Banner */}
-        <div className="relative mt-10 overflow-hidden rounded bg-gray-800">
+        <div className="relative mt-10 overflow-hidden rounded bg-gray-800"
+         style={{
+          background : "url('/images/country-bg.jpeg')",
+          backgroundPosition: "center",
+        }}>
           {/* Image removed */}
 
           <div className="relative inset-0 bg-black/50 flex flex-col justify-center px-6 py-10 md:px-12">
@@ -728,9 +733,7 @@ const TestimonialsSection = ({ visiable }) => {
             </h2>
 
             <p className="text-white mt-4 max-w-3xl">
-              Find the opportunities for Scholarships in Italy
-              with our comprehensive guidance to ensure your
-              academic convenience
+              Find the Opportunities for Scholarships in Study Abroad with our comprehensive guidance to ensure your academic convenience
             </p>
 
             <button
@@ -825,7 +828,7 @@ const courseCategories = [
 
 const FeaturesSection = ({ visiable }) => {
   return (
-    <section className="bg-[#fff] py-12">
+    <section className="bg-[#fff] py-8"  style={{marginTop  : "2rem"}}>
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">
@@ -883,7 +886,7 @@ const FeaturesSection = ({ visiable }) => {
 
 
 const whyChooseGateway = {
-  title: "Why Students Choose Getway Study abroad Consultant",
+  title: "Why Students Choose Gateway Study abroad Consultant",
 
   services: [
     {
@@ -947,10 +950,10 @@ const whyChooseGateway = {
 
 const FeaturesSection1 = () => {
   return (
-    <section className="bg-[#f5f5f5] py-12">
+    <section className="bg-[#f5f5f5] py-8"  style={{marginTop  : "2rem"}}>
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-10">
+        <div className="text-center my-6">
           <h2 className="text-3xl md:text-5xl font-bold text-black">
             {whyChooseGateway.title}
           </h2>
@@ -1279,23 +1282,16 @@ const LargeFeatureCard = ({ feature, visiable }) => {
 
 const TrustSection = ({ visiable }) => {
   return (
-    <section className="w-full py-8 lg:py-16 bg-[#fff] overflow-hidden">
+    <section className="w-full py-8 lg:py-10 bg-[#fff] overflow-hidden"  style={{marginTop  : ".5rem"}}>
       <div className="max-w-7xl mx-auto px-3 md:px-6">
         {/* TOP HEADING */}
-        <div className="text-center max-w-5xl mx-auto mb-10">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#000] leading-tight">
-            Your SAT Success:
-            <span className="text-[#000]">
-              {" "}
-              Your Ticket to Global Universities
-            </span>
+        <div className="text-center max-w-5xl mx-auto mb-10"  >
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#000] leading-tight"  >
+            Complete Support for Your Study Abroad Journey
           </h2>
 
           <p className="mt-5 text-gray-600 text-sm md:text-lg leading-relaxed">
-            Boost your SAT score with expert coaching at Gateway
-            Abroad! Get personalized training, practice tests,
-            and strategies to ace the SAT and secure admission
-            to top universities worldwide.
+            We help students achieve their international education dreams with personalized counseling and end-to-end assistance.
           </p>
         </div>
 

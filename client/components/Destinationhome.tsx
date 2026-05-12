@@ -19,7 +19,7 @@ const homePage = {
         subtitle:
           "<p>We have professional counsellors who offer personalized guidance in assisting you to analyze and consider the best study locations, identify the best universities, select the best program that fits in your academic areas, and future goals. Such an individualised counselling session assists you to develop a solid base for your overseas education experience.</p>",
         ctabutton: "Free Expert Consultation",
-        ctaRoute: "https://ooshasglobal.com/contact",
+        ctaRoute: "/contactUs",
       },
 
       {
@@ -28,7 +28,7 @@ const homePage = {
         subtitle:
           "<p>We will make it easy to apply to your chosen university. Our experts will work on the documentation, deadlines, and submissions so that you have a good application with no mistakes.</p>",
         ctabutton: "Free Expert Consultation",
-        ctaRoute: "https://ooshasglobal.com/contact",
+        ctaRoute: "/contactUs",
       },
 
       {
@@ -37,7 +37,7 @@ const homePage = {
         subtitle:
           "<p>Our team guides you through a wide range of financial support, including education loans, scholarships, and funding opportunities. So you can manage your expenses easily and pursue your international education without financial stress.</p>",
         ctabutton: "Free Expert Consultation",
-        ctaRoute: "https://ooshasglobal.com/contact",
+        ctaRoute: "/contactUs",
       },
 
       {
@@ -46,7 +46,7 @@ const homePage = {
         subtitle:
           "<p>Rely on our trained visa consultants to manage your documentation and filing with precision—our proven 99% success rate reflects the quality of our guidance.</p>",
         ctabutton: "Free Expert Consultation",
-        ctaRoute: "https://ooshasglobal.com/contact",
+        ctaRoute: "/contactUs",
       },
     ],
   },
@@ -78,7 +78,8 @@ const Destinationhome = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-12 lg:py-20 max-w-[1440px]  px-4 max-w-7xl mx-auto"
+      className="relative bg-white py-8 lg:py-10 max-w-[1440px]  px-4 max-w-7xl mx-auto"
+       style={{marginTop  : "2rem"}}
     >
       {/* TITLE */}
       <div className="text-center mb-10 lg:mb-16">
@@ -146,7 +147,7 @@ const Destinationhome = () => {
         </div>
 
             <div className="w-full hidden lg:block lg:w-1/2 flex justify-center self-stretch">
-          <div className="sticky top-24 h-fit w-full max-w-[550px]">
+          <div className="sticky top-24 h-fit w-full max-w-[750px]">
             <img
               src={imageSrc}
               alt="Foreign Education Consultants"
