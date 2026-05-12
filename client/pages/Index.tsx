@@ -477,7 +477,7 @@ const HeroSection = ({ visiable }) => {
                   className="relative z-1 -bottom-10"
                 >
                   <img
-                    src={"https://res.cloudinary.com/dhzire2mc/image/upload/v1772779540/cway-admin/jx0ei9ny7dobkolcz6po.png"}
+                    src={"/images/hero-bg-1.png"}
                     width={450}
                     height={900}
                     alt="cap"
@@ -491,15 +491,14 @@ const HeroSection = ({ visiable }) => {
       </section>
 
       {/* STATS */}
-      <section className="py-6 px-4 bg-white">
+      <section className="py-2 px-4 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {homePage.stats.item.map((stat, index) => {
             const Icon = stat?.icon;
-
             return (
               <div
                 key={index}
-                className="bg-[#ececec] rounded-2xl px-4 py-5 flex items-center gap-3 hover:bg-[#d71635] group transition duration-300"
+                className="bg-[#ececec] rounded-2xl px-4 py-2 flex items-center gap-3 hover:bg-[#d71635] group transition duration-300"
               >
                 <Icon className="w-10 h-10 text-[#d71635] group-hover:text-white" />
 

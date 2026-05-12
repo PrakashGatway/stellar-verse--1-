@@ -118,7 +118,7 @@ const Destinationhome = () => {
               className="sticky rounded-2xl p-6 xl:p-8 bg-white shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300"
             >
               {/* NUMBER */}
-              <div className="w-12 h-12 rounded-full bg-[#1a3a6b] text-white flex items-center justify-center text-lg font-bold mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#d71635] text-white flex items-center justify-center text-lg font-bold mb-4">
                 {step.number}
               </div>
 
@@ -137,7 +137,7 @@ const Destinationhome = () => {
 
               {/* BUTTON */}
               <Link to={step.route || "/contact"}>
-                <button className="px-6 py-3 rounded-full border-2 border-[#1a3a6b] text-[#1a3a6b] font-semibold hover:bg-[#1a3a6b] hover:text-white transition-all duration-300">
+                <button className="px-6 py-3 rounded-full border-2 border-[#d71635] text-[#d71635] font-semibold hover:bg-[#d71635] hover:text-white transition-all duration-300">
                   {step.cta || "Free Expert Consultation"}
                 </button>
               </Link>
