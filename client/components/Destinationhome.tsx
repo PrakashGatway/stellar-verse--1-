@@ -116,7 +116,7 @@ const Destinationhome = () => {
               style={{
                 top: `${100 + i * 40}px`,
               }}
-              className="sticky rounded-2xl p-6 xl:p-8 bg-white shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300"
+              className="sticky rounded-2xl p-6 xl:p-8 bg-gray-50 shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300"
             >
               {/* NUMBER */}
               <div className="w-12 h-12 rounded-full bg-[#d71635] text-white flex items-center justify-center text-lg font-bold mb-4">
@@ -147,7 +147,7 @@ const Destinationhome = () => {
         </div>
 
             <div className="w-full hidden lg:block lg:w-1/2 flex justify-center self-stretch">
-          <div className="sticky top-24 h-fit w-full max-w-[750px]">
+          <div className="sticky top-24 h-fit w-full max-w-[550px]">
             <img
               src={imageSrc}
               alt="Foreign Education Consultants"

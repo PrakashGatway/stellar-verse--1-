@@ -406,7 +406,7 @@ const HeroSection = ({ visiable }) => {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-white pt-10 lg:pt-16">
+      <section className="relative overflow-hidden bg-white pt-8 lg:pt-6">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center md:gap-10">
 
@@ -527,7 +527,7 @@ const HeroSection = ({ visiable }) => {
             <img
               src="/images/home-enquiry.png"
               alt="enquiry"
-              className="w-[630px] h-[460px]"
+              className="w-[630px] h-[100%]"
             />
           </div>
 

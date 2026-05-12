@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, MoveRight, X } from "lucide-react";
+import { Menu, MoveRight, PhoneCall, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -46,6 +46,12 @@ const Header = ({ visiable }) => {
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
+    const phoneNumber = "+918302092630"; // Replace with your number
+
+  const handleCall = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
 
   return (
     <header
@@ -65,7 +71,7 @@ const Header = ({ visiable }) => {
           />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className=" items-center gap-2 md:flex">
           {/* {navLinks.map((link) => (
             <a
               key={link.label}
@@ -75,10 +81,19 @@ const Header = ({ visiable }) => {
               {link.label}
             </a>
           ))} */}
+          {/* <button onClick={() => handleCall()} */}
+    <a href="tel:+918302092630" 
+            className="group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2
+             border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition
+              hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
+          >
+            <PhoneCall className="h-4 w-4 transition group-hover:translate-x-1" />
+            +91-8302092630
+          </a>
 
           <button
             onClick={() => visiable(true)}
-            className="group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2 border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
+            className="md:flex hidden group inline-flex items-center gap-2 rounded-xl bg-amber-400 border border-2 border-black text-black px-6 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-floating md:text-base cursor-pointer"
           >
             Book Now
             <MoveRight className="h-4 w-4 transition group-hover:translate-x-1" />
