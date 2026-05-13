@@ -6,63 +6,93 @@ const Footer = ({ visiable }) => {
   return (
     <footer className="bg-background" id="footer">
       {/* Promotional CTA Section */}
-      <section
-        className="relative w-full bg-[#B11E23] overflow-hidden py-12 md:py-16 text-white text-center px-4"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(177, 30, 35, 0.85), rgba(215, 22, 53, 0.9)),
-            url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1")
-          `,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl md:text-4xl font-serif font-semibold leading-tight text-white">
-            Want Guaranteed Admissions at Top Universities?
-          </h2>
+   
+   
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#921418] via-[#B11E23] to-[#D6282E] px-4 py-16
+     text-white ">
+      {/* Background Graphic Pattern */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
 
-          <div className="space-y-2 text-base md:text-xl font-light opacity-95">
-            <p className="font-bold text-lg md:text-2xl">
-              BOOK NOW for a FREE Counselling Session!
-            </p>
-            <p>Register Now to Get Free Profile Evaluation</p>
-            <p>Choose from 70+ Universities</p>
-            <p className="text-yellow-300 font-medium">
-              Hurry Up! Admission Open for Upcoming Intake
-            </p>
-          </div>
+      <div className="relative z-10 mx-auto max-w-3xl space-y-8 text-center">
+        {/* Main Headline */}
+        <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white">
+          Want Guaranteed Admissions <br className="hidden md:inline" />
+          at Top Universities?
+        </h2>
 
-          <div className="pt-6">
-            <button
-              onClick={() => visiable(true)}
-              className="bg-white text-[#B11E23] hover:bg-gray-100 transition-all duration-300 
-                         text-lg md:text-2xl font-bold px-10 py-4 rounded-lg shadow-lg hover:scale-105 active:scale-95"
-            >
-              Book Your Seat Now
-            </button>
+        {/* Value Proposition Cards */}
+        <div className="mx-auto max-w-2xl rounded-2xl bg-black/15 p-6 backdrop-blur-sm md:p-8">
+          <div className="space-y-4 text-base md:text-xl">
+            <p className="text-xl font-black uppercase tracking-wide text-yellow-300 md:text-3xl">
+              Book Now For A Free Counselling Session!
+            </p>
+            <div className="h-px bg-white/20 my-2" />
+            <p className="font-medium text-white/90">
+              Register Today to Get a Free Profile Evaluation
+            </p>
+            <p className="font-medium text-white/90">
+              Choose from 70+ Premium Global Universities
+            </p>
           </div>
         </div>
-      </section>
 
+        {/* Urgency Badge */}
+        <p className="inline-block rounded-full bg-yellow-400 px-6 py-2 text-sm font-bold uppercase tracking-wider text-black shadow-md md:text-base animate-pulse">
+          ⚡ Hurry Up! Admission Open for Upcoming Intake
+        </p>
+
+        {/* Call to Action Button */}
+        <div className="pt-4">
+          <button
+            onClick={() => visiable(true)}
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-white px-8 py-5 text-xl font-black text-[#B11E23] shadow-2xl transition-all duration-300 hover:bg-yellow-300 hover:text-black hover:scale-105 active:scale-98"
+          >
+            <span>Book Your Seat Now</span>
+            <svg 
+              className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth={3}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Fixed Background Image Overlay */}
+      <div
+        className="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-fixed bg-bottom bg-no-repeat opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: `url("/images/footer-bg.png")`,
+          backgroundSize: "cover",
+        }}
+      />
+    </section>
+   
       {/* Main Footer */}
-      {/* <div className="bg-gray-900 text-white py-12 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div className="bg-gray-900 text-white py-12 px-6"   style={{
+          backgroundImage: `url("/images/footer-bg.png")`,
+              backgroundRepeat: "repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "bottom",
+          // backgroundAttachment: "fixed",
+        }}>
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-10">
           
-          <div className="md:col-span-5 space-y-4">
+          <div className="w-1/3 space-y-4">
             <img
               src={brandLogo}
               alt="Gateway Abroad Educations"
               className="h-12 w-auto"
             />
             <p className="text-gray-400 text-sm leading-relaxed">
-              Your trusted education consultant for studying in Italy. We help students secure 
-              admissions in top Italian universities for Bachelor, Master, and MBA programs.
+             Find the Opportunities for Scholarships in Study Abroad with our comprehensive guidance to ensure your academic convenience
             </p>
 
             
-            <div className="flex gap-4 pt-4">
+            {/* <div className="flex gap-4 pt-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook size={24} />
               </a>
@@ -75,9 +105,9 @@ const Footer = ({ visiable }) => {
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Youtube size={24} />
               </a>
-            </div>
+            </div> */}
           </div>
-
+{/* 
           <div className="md:col-span-3">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm text-gray-400">
@@ -87,15 +117,19 @@ const Footer = ({ visiable }) => {
               <li><a href="#" className="hover:text-white transition-colors">Free Consultation</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Success Stories</a></li>
             </ul>
-          </div>
+          </div> */}
 
           
           <div className="md:col-span-4">
-            <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">Get In Touch</h3>
             <div className="space-y-3 text-sm text-gray-400">
-              <p>📍 Your Office Address, City, Country</p>
-              <p>📞 +91 XXXXX XXXXX</p>
-              <p>✉️ info@gatewayabroadeducations.com</p>
+              {/* <p>📍 Your Office Address, City, Country</p> */}
+              <p>📞 +91 8302092630</p>
+              
+                  <a
+                    href={`mailto:info@gatewayabroadeducations.com`}>
+                    ✉️ info@gatewayabroadeducations.com
+                  </a>
             </div>
 
             <div className="mt-8">
@@ -105,7 +139,7 @@ const Footer = ({ visiable }) => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 };

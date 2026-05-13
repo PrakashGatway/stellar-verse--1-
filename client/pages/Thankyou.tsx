@@ -98,13 +98,13 @@ const FullScreenThankYou = () => {
                     <div>
                       <p className="text-xs sm:text-sm text-muted-foreground">Call us at</p>
                       <p className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                        +91 90015 71113
+                        +91 8302092630
                       </p>
                     </div>
                   </a>
 
                   <a
-                    href={`mailto:jaipur@gatewayabroad.in`}
+                    href={`mailto:info@gatewayabroadeducations.com`}
                     className="flex items-center gap-4 group"
                   >
                     <div className="rounded-xl bg-primary/10 p-3 group-hover:bg-primary/20 transition-colors">
@@ -113,7 +113,7 @@ const FullScreenThankYou = () => {
                     <div>
                       <p className="text-xs sm:text-sm text-muted-foreground">Email us at</p>
                       <p className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors break-words">
-                        jaipur@gatewayabroad.in
+                        info@gatewayabroadeducations.com
                       </p>
                     </div>
                   </a>

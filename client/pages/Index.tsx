@@ -234,11 +234,9 @@ const Index = ({ type }) => {
         <Destinationhome />
         <TestimonialsSection visiable={handleConsultationTrigger} />
         <FeaturesSection visiable={handleConsultationTrigger} />
-        <FeaturesSection1 />
+        <FeaturesSection1 visiable={handleConsultationTrigger}/>
+        <SliderCuntries visiable={handleConsultationTrigger} />
         <TrustSection visiable={handleConsultationTrigger} />
-        {/* <TrainingPlans visiable={handleConsultationTrigger} /> */}
-        {/* <FaqSection />
-        <MobileCtaBar visiable={handleConsultationTrigger} /> */}
       </div>
       <Footer visiable={handleConsultationTrigger} />
     </>
@@ -426,7 +424,7 @@ const HeroSection = ({ visiable }) => {
 
               {/* CARD */}
               <div className="bg-[#d71635]/95 text-white p-5 rounded-md max-w-[430px] shadow-lg mt-6">
-                <span className="bg-[#000] text-white px-4 py-1 rounded-full text-sm inline-block mb-3">
+                <span className="bg-[#000] text-white px-4 py-1 rounded-full text-sm inline-block mb-3" onClick={() => visiable(true)}>
                   Apply Now
                 </span>
 
@@ -444,7 +442,7 @@ const HeroSection = ({ visiable }) => {
               </div>
 
               {/* BUTTONS */}
-              <div className="mt-6 flex flex-wrap gap-4">
+              {/* <div className="mt-6 flex flex-wrap gap-4">
                 <button
                   onClick={() => visiable(true)}
                   className="inline-flex items-center justify-center gap-3 rounded-2xl bg-amber-400 border border-2 border-black shadow-xl border-black px-8 py-3 text-base font-semibold text-black shadow-floating transition hover:-translate-y-0.5 hover:shadow-lg"
@@ -452,7 +450,7 @@ const HeroSection = ({ visiable }) => {
                   Book Demo
                   <MoveRight className="h-4 w-4" />
                 </button>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* RIGHT IMAGE */}
@@ -733,7 +731,8 @@ const TestimonialsSection = ({ visiable }) => {
             </h2>
 
             <p className="text-white mt-4 max-w-3xl">
-              Find the Opportunities for Scholarships in Study Abroad with our comprehensive guidance to ensure your academic convenience
+              Find the Opportunities for Scholarships in Study Abroad with our comprehensive guidance 
+              to ensure your academic convenience.
             </p>
 
             <button
@@ -747,11 +746,11 @@ const TestimonialsSection = ({ visiable }) => {
 
 
         {/* Bottom Text */}
-        <p className="text-center text-xl mt-6 text-gray-700">
+        {/* <p className="text-center text-xl mt-6 text-gray-700">
           Find the Opportunities for Scholarships in Study
           Abroad with our comprehensive guidance to ensure
           your academic convenience
-        </p>
+        </p> */}
       </div>
     </section>
   );
@@ -983,302 +982,132 @@ const FeaturesSection1 = () => {
 };
 
 
-// const TestimonialsSection = ({ visiable }) => {
-//   const containerRef = useRef(null);
-//   const [isScrolling, setIsScrolling] = useState(false);
-//   const [autoScroll, setAutoScroll] = useState(true);
-//   const [startX, setStartX] = useState(0);
-//   const [scrollLeft, setScrollLeft] = useState(0);
 
-//   // Auto-scroll effect
-//   useEffect(() => {
-//     if (!autoScroll) return;
-
-//     const container = containerRef.current;
-//     if (!container) return;
-
-//     const scrollWidth = container.scrollWidth / 2;
-//     let animationFrame;
-//     let startTime;
-
-//     const animateScroll = (timestamp) => {
-//       if (!startTime) startTime = timestamp;
-//       const elapsed = timestamp - startTime;
-
-//       const progress = (elapsed % 40000) / 40000;
-//       const scrollPos = progress * scrollWidth;
-
-//       container.scrollLeft = scrollPos;
-//       animationFrame = requestAnimationFrame(animateScroll);
-//     };
-
-//     animationFrame = requestAnimationFrame(animateScroll);
-
-//     return () => {
-//       cancelAnimationFrame(animationFrame);
-//     };
-//   }, [autoScroll]);
-
-//   // Touch handlers
-//   const handleTouchStart = (e) => {
-//     setAutoScroll(false);
-//     setIsScrolling(true);
-//     const touch = e.touches[0] || e.changedTouches[0];
-//     setStartX(touch.screenX);
-//     setScrollLeft(containerRef.current.scrollLeft);
-//   };
-
-//   const handleTouchMove = (e) => {
-//     if (!isScrolling) return;
-
-//     e.preventDefault();
-//     const touch = e.touches[0] || e.changedTouches[0];
-//     const x = touch.screenX;
-//     const walk = (x - startX) * 1;
-
-//     containerRef.current.scrollLeft = scrollLeft - walk;
-//   };
-
-//   const handleTouchEnd = () => {
-//     setIsScrolling(false);
-//     setTimeout(() => setAutoScroll(true), 2000);
-//   };
-
-//   const handleMouseDown = (e) => {
-//     setAutoScroll(false);
-//     setIsScrolling(true);
-//     setStartX(e.pageX - containerRef.current.offsetLeft);
-//     setScrollLeft(containerRef.current.scrollLeft);
-//   };
-
-//   const handleMouseMove = (e) => {
-//     if (!isScrolling) return;
-
-//     e.preventDefault();
-//     const x = e.pageX - containerRef.current.offsetLeft;
-//     const walk = (x - startX) * 2;
-
-//     containerRef.current.scrollLeft = scrollLeft - walk;
-//   };
-
-//   const handleMouseUp = () => {
-//     setIsScrolling(false);
-//     setTimeout(() => setAutoScroll(true), 3000);
-//   };
-
-//   const handleMouseLeave = () => {
-//     if (isScrolling) {
-//       setIsScrolling(false);
-//       setTimeout(() => setAutoScroll(true), 3000);
-//     }
-//   };
-
-//   // Hover handlers
-//   const handleMouseEnter = () => {
-//     setAutoScroll(false);
-//   };
-
-//   const handleMouseLeaveContainer = () => {
-//     if (!isScrolling) {
-//       setTimeout(() => setAutoScroll(true), 3000);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <section id="testimonials" className="relative scroll-mt-20 bg-background">
-//         <div className="container">
-//           <div className="mx-auto max-w-3xl text-center">
-//             <h2 className="mt-4 text-2xl font-semibold text-balance md:text-[40px]">
-//               Top <span className="text-primary">Scorers</span>
-//             </h2>
-//             <p className="mt-4 text-base text-foreground/70">
-//               Hear how Gateway Abroad students achieved their goals with personalized coaching and data-driven strategies.
-//             </p>
-//           </div>
-
-//           <div className="mt-8 space-y-8">
-//             <div
-//               ref={containerRef}
-//               onTouchStart={handleTouchStart}
-//               onTouchMove={handleTouchMove}
-//               onTouchEnd={handleTouchEnd}
-//               onMouseDown={handleMouseDown}
-//               onMouseMove={handleMouseMove}
-//               onMouseUp={handleMouseUp}
-//               onMouseLeave={handleMouseLeave}
-//               onMouseEnter={handleMouseEnter}
-//               onMouseLeave={handleMouseLeaveContainer}
-//               className="no-scrollbar py-12 flex gap-4 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
-//             >
-//               {/* Duplicate testimonials for infinite scroll effect */}
-//               {[...testimonials, ...testimonials].map((testimonial, index) => (
-//                 <motion.article
-//                   key={`${testimonial.name}-${index}`}
-//                   initial={{ opacity: 0, y: 20 }}
-//                   whileInView={{ opacity: 1, y: 0 }}
-//                   viewport={{ once: true }}
-//                   transition={{ duration: 0.5, delay: index * 0.1 }}
-//                   className="group relative max-w-[300px] shrink-0 rounded-3xl border border-4 border-border bg-card px-6 pb-6 pt-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-floating)] md:max-w-[420px]"
-//                 >
-//                   <div className="absolute -top-12 right-6">
-//                     <div className="relative">
-//                       <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-[hsl(var(--testimonial-accent))] to-primary blur-xl transition-opacity duration-300" />
-//                       <div className="relative rounded-full border-4 border-card bg-gradient-to-br from-[hsl(var(--testimonial-accent))] to-primary p-1 shadow-lg">
-//                         <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-red-400 bg-white">
-//                           <img
-//                             src={testimonial.avatar}
-//                             alt={testimonial.name}
-//                             className="h-full w-full object-cover"
-//                             loading="lazy"
-//                             decoding="async"
-//                           />
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </div>
-
-//                   <div className="space-y-4">
-//                     <div>
-//                       <h3 className="text-xl font-bold text-[#E93A3A]">
-//                         {testimonial.name}
-//                       </h3>
-//                       <p className="mt-1 text-xs font-semibold text-natural-900 uppercase tracking-[0.2em] text-muted-foreground">
-//                         {testimonial.tagline}
-//                       </p>
-//                     </div>
-
-//                     <p className="min-h-[120px] text-sm leading-relaxed text-foreground/70">
-//                       {testimonial.quote}
-//                     </p>
-//                   </div>
-//                 </motion.article>
-//               ))}
-//             </div>
-
-//             <div className="flex justify-center md:flex">
-//               <button
-//                 onClick={() => visiable(true)}
-//                 className="inline-flex items-center bg-amber-400 border border-2 border-black text-black justify-center gap-3 rounded-2xl px-8 py-3 text-base font-semibold shadow-floating transition hover:-translate-y-0.5"
-//               >
-//                 Book Free SAT Demo
-//                 <MoveRight className="h-4 w-4" />
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </>
-//   );
-// };
-
-// const FeaturesSection = ({ visiable }) => {
-//   return (
-//     <section id="course-features" className="scroll-mt-20 bg-background">
-//       <div className="container px-3">
-//         <div className="mx-auto mb-12 max-w-4xl text-center">
-//           <h2 className="mt-4 text-2xl font-semibold text-balance md:text-[40px]">
-//             One Stop Solution for<span className="text-primary"> SAT Excellence</span>
-//           </h2>
-//           <p className="mt-6 text-base text-foreground/70 md:text-lg">
-//             An immersive curriculum spanning concept mastery, pattern recognition, time management, and exam temperament—all tailored around your baseline score.
-//           </p>
-//         </div>
-
-//         <div className="grid sm:gap-8 gap-2 lg:grid-cols-3">
-//           <div className="lg:col-span-2">
-//             <div className="grid gap-2 sm:gap-6 grid-cols-2">
-//               {features.slice(0, 4).map((feature) => (
-//                 <FeatureCard key={feature.title} feature={feature} />
-//               ))}
-//             </div>
-//           </div>
-
-//           <div className="flex flex-col gap-6">
-//             {features.slice(4, 5).map((feature) => (
-//               <LargeFeatureCard key={feature.title} feature={feature} visiable={visiable} />
-//             ))}
-//           </div>
-//           <div className="block sm:hidden relative overflow-hidden rounded-[28px] border border-primary/20 bg-amber-sheen px-6 py-6 text-primary sm:px-6">
-//             <p className=" text-base font-semibold text-primary/90">
-//               Get direct, zero-cost guidance on global admissions from leading experts. Claim Your Free Session Today
-//             </p>
-//             <button onClick={() => visiable(true)} className="mt-3 rounded-full bg-amber-400 border border-2 border-black text-black px-6 py-3 text-sm font-semibold transition-all hover:bg-primary/90">
-//               Book Now
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+ const  countries = [
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1774688238/cway-admin/qyz3vuovljyyneuurleo.webp",
+    "navbarTitle": "Study in France",
+    "pageType": "country",
+    "slug": "study-in-france",
+    "subTitle": "",
+    "title": "study in france",
+    "_id": "69c6890c9e12c52997e8efcd"
+  },
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1774695080/cway-admin/oyuxigzgulfgw1uelefo.png",
+    "navbarTitle": "Study in dubai",
+    "pageType": "country",
+    "slug": "study-in-dubai",
+    "subTitle": "",
+    "title": "study in Dubai",
+    "_id": "69c618c35303aac89f8f05fe"
+  },
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1774688213/cway-admin/yjxsadgha6mgxilzjjsl.png",
+    "navbarTitle": "Study in italy",
+    "pageType": "country",
+    "slug": "study-in-italy",
+    "subTitle": "",
+    "title": "study in italy",
+    "_id": "69b5404a3617520ec77d966b"
+  },
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1771826463/cway-admin/fu9ozskb4lcqlxfcshxv.webp",
+    "navbarTitle": "Study Abroad in USA",
+    "pageType": "country",
+    "slug": "study-in-usa",
+    "subTitle": "",
+    "title": "Study in USA",
+    "_id": "699bfc04f5d8171cddb1648b"
+  },
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1771997474/cway-admin/unoq2refsbdzu0tppe2p.png",
+    "navbarTitle": "Study in Germany",
+    "pageType": "country",
+    "slug": "study-in-germany",
+    "subTitle": "",
+    "title": "Study in Germany",
+    "_id": "69955259395ba3b2792e1679"
+  },
+  {
+    "cardImage": "",
+    "navbarImage": "https://res.cloudinary.com/dhzire2mc/image/upload/v1772105211/cway-admin/czfnwgjrtvc5m0jz0j8c.png",
+    "navbarTitle": "Study in UK",
+    "pageType": "country",
+    "slug": "study-in-uk",
+    "subTitle": "",
+    "title": "Study in UK For Indian Students",
+    "_id": "6992c0f54d8ca0fa4a131b9a"
+  }
+]
 
 
 
-// Regular Feature Card (for left side)
-const FeatureCard = ({ feature }: { feature: Feature }) => {
+const SliderCuntries = ({visiable}) => {
   return (
-    <article
-      className={cn(
-        "flex h-full flex-col rounded-[28px] border border-border/80 p-3 sm:p-6 shadow-card transition-all hover:shadow-lg",
-        feature.accent,
-      )}
-    >
-      {/* Image Top Left */}
-      <div className="mb-0 sm:mb-2 rounded p-3 h-12 w-12 sm:w-20 sm:h-20 sm: flex items-center justify-center">
-        <img
-          src={feature.image}
-          alt={feature.title}
-          className="sm:w-14 sm:h-14 h-6 w-6 rounded object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
+    <div className="max-w-7xl mx-auto">
+        <div className="mb-10 relative">
+          <h2 className="text-black">
+            <span className="text-[#000] font-light block text-xl lg:text-4xl">
+              {"Explore top countries for higher Education"}
+            </span>
+            <span className="font-bold text-xl lg:text-5xl relative ">
+              {" "}
+              And build your global career.
+              <span className="absolute right-0 -bottom-1 w-25 h-[2px] lg:h-1 bg-[#F46C44]"
+               style={{width:"10rem",height:"6px"}}></span>
+            </span>
+          </h2>
+        </div>
 
-      {/* Content */}
-      <div className="flex flex-1 flex-col">
-        <h3 className="sm:text-lg font-semibold text-foreground text-sm">{feature.title}</h3>
-        <p className="sm:mt-2 mt-0 flex-1 sm:text-sm text-foreground/70 text-xs">{feature.description}</p>
-      </div>
-    </article>
-  );
-};
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      {countries.map((country) => (
+        <div
+          key={country._id}
+          onClick={() => visiable(true)}
+          className="cursor-pointer group relative block h-48 sm:h-56 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          aria-label={`Learn about studying in ${country.navbarTitle || country.title}`}
+        >
+          {/* Background Image */}
+          <img
+            src={country.navbarImage || country.cardImage || '/placeholder-country.jpg'}
+            alt={`${country.navbarTitle || country.title} flag or landmark`}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
 
-const LargeFeatureCard = ({ feature, visiable }) => {
-  return (
-    <article
-      className={cn(
-        "flex h-full flex-col rounded-[28px] border border-border/80 p-6 shadow-card transition-all hover:shadow-lg",
-        feature.accent,
-      )}
-    >
-      {/* Full Width Image */}
-      <div className="mb-2 rounded p-3 w-20 h-20 flex items-center justify-center">
-        <img
-          src={feature.image}
-          alt={feature.title}
-          className="w-14 h-14 rounded object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
 
-      {/* Content */}
-      <div className="flex flex-1 flex-col">
-        <h3 className="sm:text-xl text-lg font-semibold text-foreground">{feature.title}</h3>
-        <p className="sm:mt-3 mt-1 flex-1 sm:text-base text-sm mb-2 text-foreground/70">{feature.description}</p>
-      </div>
-      <div className="hidden sm:block relative overflow-hidden rounded-[28px] border border-primary/20 bg-amber-sheen px-4 py-4 text-primary sm:px-6">
-        <p className=" text-base font-semibold text-primary/90">
-          Get direct, zero-cost guidance on global admissions from leading experts. Claim Your Free Session Today
-        </p>
-        <button onClick={() => visiable(true)} className="mt-3 bg-amber-400 border border-2 border-black text-black rounded-full px-6 py-3 text-sm font-semibold transition-all">
-          Book Now
-        </button>
-      </div>
-    </article>
-  );
-};
+          {/* Content Badge */}
+          <div className="absolute inset-0 flex items-end justify-center pb-4 px-3" 
+              onClick={() => visiable(true)}>
+            <span className="cursor-pointer bg-black/50 backdrop-blur-sm border border-white/20 text-white font-semibold text-sm sm:text-base py-2.5 px-5 rounded-xl shadow-lg transform transition-transform group-hover:scale-[1.02]">
+              {country.navbarTitle || country.title}
+            </span>
+          </div>
+
+          {/* Optional: Subtitle or CTA hint on hover */}
+          <div 
+              onClick={() => visiable(true)}
+              className="absolute inset-0 flex items-start justify-end p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="text-white/90 text-xs bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-sm">
+              Explore →
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    </div>
+  )
+}
+
 
 const TrustSection = ({ visiable }) => {
   return (
