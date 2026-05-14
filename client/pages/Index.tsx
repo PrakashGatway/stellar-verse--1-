@@ -374,6 +374,36 @@ const HeroSection = ({ visiable }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  const utmSource = params.get("utm_source")?.toLowerCase();
+  const referrer = document.referrer.toLowerCase();
+
+  let source = "website";
+
+  // Google Ads
+  if (
+    params.get("gclid") ||
+    params.get("gad_source") ||
+    params.get("gbraid") ||
+    utmSource?.includes("google")
+  ) {
+    source = "googleAds";
+  }
+
+  else if (referrer.includes("google")) {
+    source = "googleAds";
+  }
+
+
+  sessionStorage.setItem("traffic_source", source);
+  sessionStorage.setItem("utmSource", utmSource || "NA")
+
+  console.log("Traffic Source:", source);
+
+}, []);
+
   const onSubmit = async (data) => {
     const { fullName, email, mobileNumber, city, destination, state, ...rest } = data;
     try {
@@ -383,23 +413,39 @@ const HeroSection = ({ visiable }) => {
         phone: mobileNumber,
         city: city.trim(),
         coursePreference: 'NA',
-        source: "googleAds",
+        source: sessionStorage.getItem("traffic_source") || "website",
         extraDetails: {
           ...rest,
           destination: destination,
-          state: state
+          state: state,
+          utmSource : sessionStorage.getItem("utmSource") || "NA"
+
         }
       });
       if (response.data.success) {
         localStorage.setItem('formFilled', 'true');
+              
+        sessionStorage.setItem("traffic_source", "");
+        sessionStorage.setItem("utmSource", "");
         navigate('/thankyou');
         reset();
+
       }
     } catch (error) {
       console.error('Form submission error:', error);
       alert('Something went wrong. Please try again.');
     }
   };
+
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    console.log("clearing data")
+    sessionStorage.setItem("traffic_source", "");
+  }, 10 * 60 * 1000); 
+
+  return () => clearTimeout(timer); 
+}, []);
+
 
   return (
     <>

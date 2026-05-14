@@ -10,9 +10,9 @@ const WhatsAppIcon = () => {
 
     return () => clearTimeout(timeout);
   }, []);
-
+ 
   const handleClick = () => {
-    const message = encodeURIComponent('Hi, I want help with SAT preparation.');
+    const message = encodeURIComponent('Hi, I want help  preparation.');
     window.open(`https://wa.me/917023881046?text=${message}`, '_blank');
   };
 

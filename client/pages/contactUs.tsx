@@ -24,12 +24,17 @@ const SATConsultation = () => {
         phone: data.mobileNumber,
         city: data.city.trim(),
         coursePreference: "NA",
-        source: "googleAds",
-        extraDetails: data
+        source: sessionStorage.getItem("traffic_source") || "website",
+        extraDetails: {
+          data,
+          utmSource : sessionStorage.getItem("utmSource") || "NA"
+        }
       });
 
       localStorage.setItem("formFilled", "true");
       navigate("/thankyou");
+        sessionStorage.setItem("traffic_source", "");
+        sessionStorage.setItem("utmSource", "");
       reset();
     } catch (error) {
       alert("Something went wrong! Try again.");
@@ -38,6 +43,7 @@ const SATConsultation = () => {
 
   
 const logoSrc = "https://www.gatewayabroadeducations.com/images/logo.svg";
+
   return (
     <div className="min-h-screen bg-white flex flex-col  ">
       
